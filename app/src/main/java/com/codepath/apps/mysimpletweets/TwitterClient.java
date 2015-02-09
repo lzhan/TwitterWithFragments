@@ -5,6 +5,7 @@ import org.scribe.builder.api.FlickrApi;
 import org.scribe.builder.api.TwitterApi;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -37,14 +38,30 @@ public class TwitterClient extends OAuthBaseClient {
     //https://dev.twitter.com/rest/reference/get/statuses/home_timeline
     //count=25
     //since_id=1
-    public void getHomeTimeline(AsyncHttpResponseHandler handler) {
+    public void getHomeTimeline(AsyncHttpResponseHandler handler, long max) {
         String apiUrl = getApiUrl("statuses/home_timeline.json");
         //specify the params
         RequestParams params = new RequestParams();
         params.put("count", 25);
         params.put("since_id", 1);
+        if (max != 0L) {
+            params.put("max_id", String.valueOf(max));
+        }
         //Execute the request
         getClient().get(apiUrl, params, handler);
+    }
+
+    public void getVerifyCredentials(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        getClient().get(apiUrl, null, handler);
+    }
+
+    public void postStatusesUpdate(String status, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("/statuses/update.json");
+        Log.d("DEBUG", status);
+        RequestParams params = new RequestParams();
+        params.put("status", status);
+        getClient().post(apiUrl, params, handler);
     }
     //HomeTimeline -- Gets us the home timeline
 

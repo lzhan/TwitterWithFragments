@@ -11,8 +11,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <application
         android:name=".TwitterApplication"
         android:allowBackup="true"
@@ -49,6 +47,10 @@
         <activity
             android:name=".TimelineActivity"
             android:label="@string/title_activity_timeline" >
+        </activity>
+        <activity
+            android:name=".ComposeActivity"
+            android:label="Compose Tweet" >
         </activity>
     </application>
 

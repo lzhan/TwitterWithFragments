@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/btCancel"
+        android:onClick="onCancel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tweet"
+        android:id="@+id/btTweet"
+        android:onClick="onSummit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/tvUserScreenName"
+        android:layout_toRightOf="@+id/ivUserImage"
+        android:layout_alignRight="@+id/btTweet"
+        android:layout_alignEnd="@+id/btTweet"
+        android:layout_alignBottom="@+id/ivUserImage"
+        android:layout_below="@+id/btCancel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivUserImage"
+        android:layout_below="@+id/btCancel"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:background="#ff829dff"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etContent"
+        android:layout_below="@+id/tvUserScreenName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffffff"
+        android:gravity="top"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="3dp"
+        android:inputType="textMultiLine"/>
+
+</RelativeLayout>
