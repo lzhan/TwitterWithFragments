@@ -1,6 +1,9 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +32,9 @@ public class TimelineActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
+        //ActionBar bar = getActionBar();
+        //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0000ff")));
 
         lvTweets = (ListView) findViewById(R.id.lvTweets);
         tweets = new ArrayList<>();
