@@ -1,9 +1,9 @@
 Simple Twitter Client App
-======================
+=========================
 
 This is a Simple Twitter Client app which allows a user to login to his/her account, check tweets and compose/post new tweet.
 
-Time spent: 12 hours spent in total
+Time spent: 10 hours spent in total
 
 ## Completed user stories:
 
@@ -13,7 +13,6 @@ Time spent: 12 hours spent in total
  * [x] Required: User can click a “Compose” icon in the Action Bar on the top right
  * [x] Required: User can then enter a new tweet and post this to twitter
  * [x] Required: User is taken back to home timeline with new tweet visible in timeline
- * [x] Advanced: Use the ActionBar SearchView instead of an EditText
  * [x] Optional: Links in tweets are clickable and will launch the web browser
 
 ## Walkthrough of all user stories
