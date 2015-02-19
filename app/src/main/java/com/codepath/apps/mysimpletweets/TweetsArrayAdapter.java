@@ -1,6 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +27,12 @@ import java.util.Locale;
 
 //taking the tweet object and turn it into views
 public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
+    private Context mcon;
+    private String screen_name;
 
     public TweetsArrayAdapter(Context context, List<Tweet> tweets) {
         super(context, android.R.layout.simple_list_item_1, tweets);
+        mcon = context;
     }
 
     //override and setup custom template
@@ -40,16 +44,26 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);
         }
-        ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
+        ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivPImage);
         TextView tvUserName = (TextView) convertView.findViewById(R.id.tvUserName);
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
-        //Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/DroidSansFallback.ttf");
-        //tvName.setTypeface(type);
+
+
+        ImageView ivPImage = (ImageView) convertView.findViewById(R.id.ivPImage);
+        screen_name = tweet.getUser().getScreenName();
+        ivPImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mcon, OthersProfileActivity.class);
+                i.putExtra("screen_name", screen_name);
+                mcon.startActivity(i);
+            }
+        });
 
         tvUserName.setText(tweet.getUser().getName());
-        tvName.setText("@"+tweet.getUser().getScreenName());
+        tvName.setText("@"+screen_name);
         tvBody.setText(tweet.getBody());
 
         String date = tweet.getCreatedAt();

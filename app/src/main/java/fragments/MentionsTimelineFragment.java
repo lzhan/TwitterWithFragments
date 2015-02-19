@@ -29,6 +29,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     }
 
     private void populateTimeline(Long max) {
+        //Get Mention Time Line
         client.getMentionsTimeline(new JsonHttpResponseHandler() {
             //success
             @Override

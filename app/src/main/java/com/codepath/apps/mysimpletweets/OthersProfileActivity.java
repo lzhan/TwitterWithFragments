@@ -1,27 +1,28 @@
 package com.codepath.apps.mysimpletweets;
 
+import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.PipedInputStream;
 
 import fragments.UserTimelineFragment;
 
-public class ProfileActivity extends ActionBarActivity {
+/**
+ * Created by lzhan on 2/17/15.
+ */
+public class OthersProfileActivity extends ActionBarActivity {
     TwitterClient client;
     User user;
 
@@ -29,20 +30,20 @@ public class ProfileActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        String screenName = getIntent().getStringExtra("screen_name");
         client = TwitterApplication.getRestClient();
         //this is getting the default user for now
-        client.getUserInfo(new JsonHttpResponseHandler(){
+        client.getOtherUserInfo(screenName, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 user = User.fromJSON(response);
-                getSupportActionBar().setTitle("@"+user.getScreenName());
+                Log.d("DEBUG", user.toString());
+                getSupportActionBar().setTitle("Profile");
                 populateProfileHeader(user);
             }
         });
 
 
-        //get the screen name
-        String screenName = getIntent().getStringExtra("screen_name");
         if (savedInstanceState == null) {
             //create user timeline fragment
             UserTimelineFragment fragmentUserTimeline = UserTimelineFragment.newInstance(screenName);
